@@ -21,16 +21,16 @@ app.use(cors({
     origin: process.env.FRONTEND_URL || '*', 
     credentials: true // Allow cookies from frontend
 }));
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+// app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // Routes
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
 // Redirect root URL to index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/html/index.html'));
-});
+//app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public/html/index.html'));
+//});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
