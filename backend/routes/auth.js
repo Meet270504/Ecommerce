@@ -8,7 +8,7 @@ const SECRET_KEY = process.env.SECRET_KEY;
 
 // Helper to validate token
 const validateToken = (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.cookies.token || req.headers.authorization?.split(' ')[1]; // Support cookies or Authorization header
 
     if (!token) {
         return res.status(401).json({ error: 'Unauthorized' });
@@ -67,11 +67,31 @@ router.post('/login', (req, res) => {
     });
 });
 
-// Middleware to validate token
-router.use(validateToken);
+// Logout a user
+router.get('/logout', (req, res) => {
+    res.clearCookie('token'); // Clear the token cookie
+    res.status(200).json({ message: 'Logout successful' });
+});
+
+// Get user profile
+router.get('/profile', validateToken, (req, res) => {
+    const userId = req.user.id;
+
+    db.get('SELECT email FROM users WHERE id = ?', [userId], (err, row) => {
+        if (err) {
+            console.error('Database error:', err.message);
+            return res.status(500).json({ error: 'Database error' });
+        }
+        if (!row) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.status(200).json({ email: row.email });
+    });
+});
 
 // Add product to cart
-router.post('/cart/add', (req, res) => {
+router.post('/cart/add', validateToken, (req, res) => {
     const { productId } = req.body;
     const userId = req.user.id;
 
@@ -82,30 +102,8 @@ router.post('/cart/add', (req, res) => {
     });
 });
 
-// Logout a user
-router.get('/logout', (req, res) => {
-    res.clearCookie('token'); // Clear the token cookie
-    res.status(200).json({ message: 'Logout successful' });
-});
-
-// Get user profile
-router.get('/profile', (req, res) => {
-    const userId = req.user.id;
-
-    db.get('SELECT email FROM users WHERE id = ?', [userId], (err, row) => {
-        if (err) {
-            return res.status(500).json({ error: 'Database error' });
-        }
-        if (!row) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        res.json({ email: row.email });
-    });
-});
-
 // Get cart items for a user
-router.get('/cart', (req, res) => {
+router.get('/cart', validateToken, (req, res) => {
     const userId = req.user.id;
 
     const sql = `
@@ -122,7 +120,7 @@ router.get('/cart', (req, res) => {
 });
 
 // Remove item from cart
-router.post('/cart/remove', (req, res) => {
+router.post('/cart/remove', validateToken, (req, res) => {
     const { productId } = req.body;
     const userId = req.user.id;
 
@@ -136,7 +134,7 @@ router.post('/cart/remove', (req, res) => {
 });
 
 // Update cart item quantity
-router.post('/cart/update-quantity', (req, res) => {
+router.post('/cart/update-quantity', validateToken, (req, res) => {
     const { productId, quantity } = req.body;
     const userId = req.user.id;
 

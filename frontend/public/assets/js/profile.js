@@ -28,21 +28,9 @@ async function fetchUserProfile() {
     const emailSpan = document.getElementById('user-email');
 
     try {
-        // Get the token from cookies
-        const cookies = document.cookie.split(';');
-        const tokenCookie = cookies.find(cookie => cookie.trim().startsWith('token='));
-
-        if (!tokenCookie) {
-            console.error('No token found. User not logged in.');
-            window.location.href = './login.html';
-            return;
-        }
-
-        const token = tokenCookie.split('=')[1];
-
         // Fetch user profile data from the server
         const response = await fetch('https://shop-9bgz.onrender.com/auth/profile', {
-            headers: { Authorization: `Bearer ${token}` },
+            credentials: 'include', // Include cookies with the request
         });
 
         if (!response.ok) {
