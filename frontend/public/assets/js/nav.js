@@ -2,7 +2,7 @@
 function isLoggedIn() {
     const cookies = document.cookie.split(';');
     console.log('Cookies:', cookies); // Debugging: Log cookies
-    return cookies.some(cookie => cookie.trim().startsWith('token='));
+    return cookies.some(cookie => cookie.trim().startsWith('token=') && cookie.split('=')[1] !== 'undefined' && cookie.split('=')[1] !== '');
 }
 
 // Function to update navigation links dynamically
@@ -15,31 +15,17 @@ function updateAuthLink() {
     }
 
     if (isLoggedIn()) {
-        console.log('User is logged in. Updating link to Profile.');
+        console.log('User is logged in. Updating link to Profile.'); // Debugging
         authLink.innerHTML = `
             <a href="./profile.html"><i class="fas fa-user"></i> Profile</a>
         `;
     } else {
-        console.log('User is not logged in. Showing Login/Register.');
+        console.log('User is not logged in. Showing Login/Register.'); // Debugging
         authLink.innerHTML = `
             <a href="./login.html"><i class="fas fa-user"></i> Login/Register</a>
         `;
     }
 }
 
-// Listen for the DOM content loaded event
-document.addEventListener('DOMContentLoaded', () => {
-    updateAuthLink();
-
-    const logoutButton = document.getElementById('logout-btn');
-    if (logoutButton) {
-        console.log('Adding logout functionality to the logout button.');
-        logoutButton.addEventListener('click', () => {
-            // Redirect to the logout functionality in `profile.js`
-            logout(); // Reuse the logout function from profile.js
-
-            // Update the navigation bar after logout
-            updateAuthLink();
-        });
-    }
-});
+// Run the function after the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', updateAuthLink);
