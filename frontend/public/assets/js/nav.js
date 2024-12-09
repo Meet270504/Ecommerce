@@ -15,11 +15,11 @@ function updateAuthLink() {
 
     if (isLoggedIn()) {
         authLink.innerHTML = `
-            <a href="./public/profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="./profile.html"><i class="fas fa-user"></i> Profile</a>
         `;
     } else {
         authLink.innerHTML = `
-            <a href="./public/login.html"><i class="fas fa-user"></i> Login/Register</a>
+            <a href="./login.html"><i class="fas fa-user"></i> Login/Register</a>
         `;
     }
 }
