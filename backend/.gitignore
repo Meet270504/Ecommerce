@@ -1,0 +1,48 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+npm-shrinkwrap.json
+
+# Logs
+*.log
+*.gz
+logs/
+
+# SQLite database files
+db/database.sqlite
+
+# Environment variables
+.env
+
+# Coverage directories for test tools like Jest or NYC
+coverage/
+.nyc_output/
+
+# Build output
+dist/
+build/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# Debugger files
+node_repl_history
+*.pid
+*.pid.lock
+
+# Git conflict resolution files
+*.orig
+
+# Benchmarking
+benchmarks/graphs/
+
+# Ignore additional files using core.excludesFile
+# https://git-scm.com/docs/gitignore
