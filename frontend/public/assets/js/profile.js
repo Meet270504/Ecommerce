@@ -30,8 +30,15 @@ async function fetchUserProfile() {
     try {
         // Fetch user profile data from the server
         const response = await fetch('https://shop-9bgz.onrender.com/auth/profile', {
-            credentials: 'include', // Include cookies with the request
+            method: 'GET',
+            credentials: 'include', // Ensure cookies are sent with the request
         });
+
+        if (response.status === 401 || response.status === 403) {
+            console.error('Unauthorized access. Redirecting to login...');
+            window.location.href = './login.html';
+            return;
+        }
 
         if (!response.ok) {
             throw new Error('Failed to fetch profile data');
@@ -43,7 +50,7 @@ async function fetchUserProfile() {
         // Update the email in the DOM
         emailSpan.textContent = data.email;
     } catch (error) {
-        console.error(error.message);
+        console.error('Error fetching profile data:', error.message);
         alert('Failed to load profile data. Please log in again.');
         window.location.href = './login.html';
     }
