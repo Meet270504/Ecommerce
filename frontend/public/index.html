@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopLuxe - Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo"><i class="fas fa-store"></i> ShopLuxe</div>
+            <ul class="nav-links">
+                <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="./public/products.html"><i class="fas fa-box-open"></i> Products</a></li>
+                <li><a href="./public/wishlist.html"><i class="fas fa-heart"></i> Wishlist</a></li>
+                <li><a href="./public/cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li id="auth-link"><a href="./public/login.html"><i class="fas fa-user"></i> Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to ShopLuxe</h1>
+            <p>Discover quality products at unbeatable prices.</p>
+            <a href="./public/products.html" class="cta">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <h2>Our Trending Products</h2>
+        <div class="products">
+            <div class="product-card">
+                <span class="badge trending">Trending</span>
+                <img src="./assets/images/laptop.webp" alt="Laptop">
+                <h3>Laptop</h3>
+                <p>Price: $1000</p>
+                <a href="./public/product-details/laptop.html?origin=home" class="btn">View Details</a>
+            </div>
+            <div class="product-card">
+                <span class="badge trending">New</span>
+                <img src="./assets/images/headphones.webp" alt="Headphones">
+                <h3>Headphones</h3>
+                <p>Price: $300</p>
+                <a href="./public/product-details/headphones.html?origin=home" class="btn">View Details</a>
+            </div>
+            <div class="product-card">
+                <span class="badge trending">Trending</span>
+                <img src="./assets/images/phone.webp" alt="Smartphone">
+                <h3>Smartphone</h3>
+                <p>Price: $800</p>
+                <a href="./public/product-details/phone.html?origin=home" class="btn">View Details</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ShopLuxe. All Rights Reserved.</p>
+        <div class="socials">
+            <a href="#"><img src="./assets/images/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="./assets/images/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="./assets/images/twitter.png" alt="Twitter"></a>
+        </div>
+    </footer>
+
+    <!-- External JS for dynamic auth link -->
+    <script src="./assets/js/nav.js"></script>
+</body>
+</html>
