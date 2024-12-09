@@ -1,0 +1,48 @@
+/* Same styles as register.css but modified for login */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #f7faff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-container {
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: #4facfe;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.password-field {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
