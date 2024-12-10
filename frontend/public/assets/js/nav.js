@@ -1,8 +1,7 @@
 // Function to check if the user is logged in
 function isLoggedIn() {
     const cookies = document.cookie.split(';');
-    console.log('Cookies:', cookies); // Debugging: Log cookies
-    return cookies.some(cookie => cookie.trim().startsWith('token=') && cookie.split('=')[1] !== 'undefined' && cookie.split('=')[1] !== '');
+    return cookies.some(cookie => cookie.trim().startsWith('token='));
 }
 
 // Function to update navigation links dynamically
@@ -15,12 +14,10 @@ function updateAuthLink() {
     }
 
     if (isLoggedIn()) {
-        console.log('User is logged in. Updating link to Profile.'); // Debugging
         authLink.innerHTML = `
             <a href="./profile.html"><i class="fas fa-user"></i> Profile</a>
         `;
     } else {
-        console.log('User is not logged in. Showing Login/Register.'); // Debugging
         authLink.innerHTML = `
             <a href="./login.html"><i class="fas fa-user"></i> Login/Register</a>
         `;
