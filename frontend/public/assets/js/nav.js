@@ -1,3 +1,4 @@
+// Function to check if the user is logged in
 async function isLoggedIn() {
     try {
         const response = await fetch('https://shop-9bgz.onrender.com/auth/profile', {
@@ -5,13 +6,20 @@ async function isLoggedIn() {
             credentials: 'include' // Include cookies in cross-origin requests
         });
 
-        return response.ok;
+        if (response.ok) {
+            return true;
+        } else {
+            // If the token is invalid or expired, clear the cookie
+            document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            return false;
+        }
     } catch (error) {
         console.error('Error checking login status:', error);
         return false;
     }
 }
 
+// Function to update navigation links dynamically
 async function updateAuthLink() {
     const authLink = document.getElementById('auth-link');
 

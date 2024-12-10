@@ -15,12 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to log out the user
 function logout() {
-    // Clear the token cookie by setting it with an expired date
-    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=None; Secure;";
-    console.log('User logged out.'); // Debugging
-
-    // Redirect to the home page
-    window.location.href = '/';
+    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    updateAuthLink(); // Dynamically update the navbar
+    window.location.href = '/'; // Redirect to home page
 }
 
 // Function to fetch and display user profile data

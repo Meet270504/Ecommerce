@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - ShopLuxe</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/profile.js"></script>
-    <script src="./assets/js/nav.js"></script>
+    <script src="./assets/js/nav.js" defer></script>
+    <script src="./assets/js/profile.js" defer></script>
 </head>
 <body>
     <header>
@@ -17,16 +17,17 @@
                 <li><a href="./products.html"><i class="fas fa-box-open"></i> Products</a></li>
                 <li><a href="./wishlist.html"><i class="fas fa-heart"></i> Wishlist</a></li>
                 <li><a href="./cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-                <li><a id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li id="auth-link"><a href="./login.html"><i class="fas fa-user"></i> Login/Register</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <h1>Your Profile</h1>
-        <p>Email: <span id="user-email">Loading...</span></p>
+        <div id="profile-container">
+            <p>Email: <span id="user-email">Loading...</span></p>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 ShopLuxe. All Rights Reserved.</p>
     </footer>
 </body>
-</html>
