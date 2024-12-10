@@ -91,9 +91,13 @@ router.post('/cart/add', (req, res) => {
     });
 });
 
-// Logout a user
 router.get('/logout', (req, res) => {
-    res.clearCookie('token'); // Clear the token cookie
+    res.clearCookie('token', {
+        path: '/',
+        domain: 'shop-9bgz.onrender.com', // Match the domain where the cookie is set
+        secure: true,                      // Match the cookie's `secure` flag
+        sameSite: 'None'                   // Match the cookie's `sameSite` flag
+    });
     res.status(200).json({ message: 'Logout successful' });
 });
 

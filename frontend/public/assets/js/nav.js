@@ -2,7 +2,7 @@ async function isLoggedIn() {
     try {
         const response = await fetch('https://shop-9bgz.onrender.com/auth/profile', {
             method: 'GET',
-            credentials: 'include' // Include cookies in cross-origin requests
+            credentials: 'include' // Include cookies in the request
         });
 
         return response.ok;
@@ -14,12 +14,6 @@ async function isLoggedIn() {
 
 async function updateAuthLink() {
     const authLink = document.getElementById('auth-link');
-
-    // No auth-link logic needed for profile.html
-    if (window.location.pathname.includes('profile.html')) {
-        if (authLink) authLink.remove();
-        return;
-    }
 
     if (!authLink) {
         console.error('auth-link element not found');

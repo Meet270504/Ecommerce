@@ -15,23 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function logout() {
     try {
+        // Call the backend logout endpoint
         const response = await fetch('https://shop-9bgz.onrender.com/auth/logout', {
             method: 'GET',
-            credentials: 'include', // Include cookies in cross-origin requests
+            credentials: 'include', // Include cookies in the request
         });
 
         if (response.ok) {
             console.log('Backend logout successful.');
-        }
 
-        // Clear the token cookie locally for the backend domain
-        document.cookie = "token=; path=/; domain=shop-9bgz.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-        
-        // Redirect to the home page
-        window.location.href = './index.html';
+            // Clear the cookie on the frontend for the backend domain
+            document.cookie = "token=; path=/; domain=shop-9bgz.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            
+            // Redirect to home page
+            window.location.href = './index.html';
+        } else {
+            console.error('Failed to log out on the backend.');
+            alert('Failed to log out. Please try again.');
+        }
     } catch (error) {
         console.error('Error logging out:', error);
-        alert('Failed to log out. Please try again.');
+        alert('Something went wrong. Please try again.');
     }
 }
 
