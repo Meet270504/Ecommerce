@@ -68,6 +68,10 @@ router.post('/login', (req, res) => {
             sameSite: 'None', 
             maxAge: 3600000 
         });
+
+        // Debug log to verify headers being sent
+        console.log('Set-Cookie Header:', res.getHeaders()['set-cookie']); // Logs the Set-Cookie header
+
         res.status(200).json({ message: 'Login successful' });
     });
 });
