@@ -13,13 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchUserProfile();
 });
 
-function logout() {
-    // Clear the token cookie for the backend domain
-    document.cookie = "token=; path=/; domain=shop-9bgz.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    console.log('User logged out.'); // Debugging
+async function logout() {
+    try {
+        const response = await fetch('https://shop-9bgz.onrender.com/auth/logout', {
+            method: 'GET',
+            credentials: 'include', // Include cookies in cross-origin requests
+        });
 
-    // Redirect to the home page
-    window.location.href = './index.html';
+        if (response.ok) {
+            console.log('Backend logout successful.');
+        }
+
+        // Clear the token cookie locally for the backend domain
+        document.cookie = "token=; path=/; domain=shop-9bgz.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        
+        // Redirect to the home page
+        window.location.href = './index.html';
+    } catch (error) {
+        console.error('Error logging out:', error);
+        alert('Failed to log out. Please try again.');
+    }
 }
 
 // Function to fetch and display user profile data
