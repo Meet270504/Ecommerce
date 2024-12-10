@@ -18,8 +18,8 @@ app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse form submissions
 app.use(cookieParser()); // Parse cookies
 app.use(cors({ 
-    origin: process.env.FRONTEND_URL || '*', 
-    credentials: true // Allow cookies from frontend
+    origin: process.env.FRONTEND_URL, // Exact frontend URL
+    credentials: true                // Allow cookies in cross-origin requests
 }));
 // app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
