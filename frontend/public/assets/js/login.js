@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify({ email, password }),
                     credentials: 'include' // Include cookies in cross-origin requests
                 });
-                
+
                 if (response.ok) {
-                    const result = await response.json();
+                    console.log('Login response headers:', response.headers);
+
                     alert('Login successful!');
                     window.location.href = './index.html';
                 } else {
