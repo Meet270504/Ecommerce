@@ -15,9 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to log out the user
 function logout() {
-    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    updateAuthLink(); // Dynamically update the navbar
-    window.location.href = '/'; // Redirect to home page
+    // Clear the token cookie by setting it with an expired date, ensuring the domain is specified
+    document.cookie = "token=; path=/; domain=shopping-eo6m.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    console.log('User logged out.'); // Debugging
+
+    // Redirect to the home page
+    window.location.href = './index.html';
 }
 
 // Function to fetch and display user profile data
@@ -34,7 +37,7 @@ async function fetchUserProfile() {
         if (!response.ok) {
             if (response.status === 401 || response.status === 403) {
                 alert('Session expired. Please log in again.');
-                window.location.href = '/html/login.html'; // Redirect to login
+                window.location.href = './login.html'; // Redirect to login
             }
             throw new Error('Failed to fetch profile data');
         }
