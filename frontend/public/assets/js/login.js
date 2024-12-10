@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ email, password }),
+                    credentials: 'include' // Include cookies in cross-origin requests
                 });
 
                 if (response.ok) {
