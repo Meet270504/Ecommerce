@@ -19,9 +19,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 if (response.ok) {
-                    console.log('Login response headers:', response.headers);
-
+                    const result = await response.json();
                     alert('Login successful!');
+
+                    // Dynamically update navigation links after login
+                    if (typeof updateAuthLink === 'function') {
+                        updateAuthLink();
+                    }
+
+                    // Redirect to home or another page
                     window.location.href = './index.html';
                 } else {
                     const error = await response.json();

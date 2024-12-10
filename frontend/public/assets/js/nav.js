@@ -1,9 +1,8 @@
-/// Function to check if the user is logged in
 async function isLoggedIn() {
     try {
         const response = await fetch('https://shop-9bgz.onrender.com/auth/profile', {
             method: 'GET',
-            credentials: 'include'
+            credentials: 'include' // Include cookies in cross-origin requests
         });
 
         return response.ok;
@@ -13,7 +12,6 @@ async function isLoggedIn() {
     }
 }
 
-// Function to update navigation links dynamically
 async function updateAuthLink() {
     const authLink = document.getElementById('auth-link');
 
