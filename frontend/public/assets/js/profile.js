@@ -13,10 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchUserProfile();
 });
 
-// Function to log out the user
 function logout() {
-    // Clear the token cookie by setting it with an expired date, ensuring the domain is specified
-    document.cookie = "token=; path=/; domain=shopping-eo6m.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    // Clear the token cookie for the backend domain
+    document.cookie = "token=; path=/; domain=shop-9bgz.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     console.log('User logged out.'); // Debugging
 
     // Redirect to the home page

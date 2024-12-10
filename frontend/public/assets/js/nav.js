@@ -15,11 +15,9 @@ async function isLoggedIn() {
 async function updateAuthLink() {
     const authLink = document.getElementById('auth-link');
 
-    // Remove auth-link logic entirely for the profile page
-    if (window.location.href.includes('profile.html')) {
-        if (authLink) {
-            authLink.remove(); // Remove the auth-link dynamically
-        }
+    // No auth-link logic needed for profile.html
+    if (window.location.pathname.includes('profile.html')) {
+        if (authLink) authLink.remove();
         return;
     }
 
