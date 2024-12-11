@@ -52,14 +52,30 @@ function renderCart(cartItems) {
     let totalItemsCount = 0;
 
     cartItems.forEach((item) => {
-        const imagePath = `./assets/images/${item.name}.webp`;
+
+        const fileName = {
+            Backpack: "backpack.webp",
+            Camera: "camera.webp",
+            WaterBottle: "water-bottle.webp",
+            Laptop: "laptop.webp",
+            Headphones: "headphones.webp",
+            Hoodie: "Hoodie.webp",
+            Ipad: "Ipad.webp",
+            Smartphone: "Phone.webp",
+            Smartwatch: "smartwatch.webp",
+            Sneakers: "Sneakers.webp",
+            Jacket: "Jacket.webp",
+            Sunglasses: "Sunglasses.webp",
+
+        }[item.name] || `${item.name}.webp`;
+        const imagePath = `./assets/images/${fileName}`;
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
         totalItemsCount += item.quantity;
 
         cartItemsContainer.innerHTML += `
             <div class="cart-item">
-                <img src="./assets/images/${item.name}.webp" alt="${item.name}">
+                <img src="${imagePath}" alt="${item.name}">
                 <div class="item-details">
                     <h2>${item.name}</h2>
                     <p>Price: $${item.price}</p>
