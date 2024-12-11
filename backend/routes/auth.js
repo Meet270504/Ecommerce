@@ -67,6 +67,7 @@ router.post('/login', (req, res) => {
             secure: true, 
             sameSite: 'None', 
             maxAge: 3600000 ,
+             path: '/'
         });
 
         // Debug log to verify headers being sent
