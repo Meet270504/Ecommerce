@@ -93,10 +93,10 @@ router.post('/cart/add', (req, res) => {
 
 router.get('/logout', (req, res) => {
     res.clearCookie('token', {
-        path: '/',
-        domain: 'shop-9bgz.onrender.com', // Match the domain where the cookie is set
-        secure: true,                      // Match the cookie's `secure` flag
-        sameSite: 'None'                   // Match the cookie's `sameSite` flag
+        path: '/', // Ensure it matches the path when the cookie was set
+        domain: 'shopping-eo6m.onrender.com', // Frontend domain
+        secure: true, // Ensure cookies are sent over HTTPS
+        sameSite: 'None' // Required for cross-origin requests
     });
     res.status(200).json({ message: 'Logout successful' });
 });

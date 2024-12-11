@@ -24,10 +24,10 @@ async function logout() {
         if (response.ok) {
             console.log('Backend logout successful.');
 
-            // Clear the cookie on the frontend for the backend domain
-            document.cookie = "token=; path=/; domain=shop-9bgz.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-            
-            // Redirect to home page
+            // Explicitly clear the cookie on the frontend
+            document.cookie = "token=; path=/; domain=shopping-eo6m.onrender.com; expires=Thu, 01 Jan 1970 00:00:00 UTC; secure; samesite=None";
+
+            // Redirect to the home page
             window.location.href = './index.html';
         } else {
             console.error('Failed to log out on the backend.');
