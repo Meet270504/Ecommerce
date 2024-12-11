@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - ShopLuxe</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo"><i class="fas fa-store"></i> ShopLuxe</div>
+            <ul class="nav-links">
+                <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="./products.html"><i class="fas fa-box-open"></i> Products</a></li>
+                <li><a href="./wishlist.html"><i class="fas fa-heart"></i> Wishlist</a></li>
+                <li><a href="./cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li id="auth-link"><a href="./login.html"><i class="fas fa-user"></i> Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <h1>Your Cart</h1>
+
+        <div class="cart-container">
+            <!-- Cart Items -->
+            <div class="cart-items" id="cart-items">
+                <!-- Items will be dynamically inserted here -->
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h2>Summary</h2>
+                <p>Total Items: <span id="total-items">0</span></p>
+                <p>Total Price: <span id="total-price">$0</span></p>
+                <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ShopLuxe. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Include JavaScript -->
+    <script src="../js/nav.js" defer></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>
