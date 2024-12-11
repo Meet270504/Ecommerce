@@ -66,9 +66,7 @@ router.post('/login', (req, res) => {
             httpOnly: true, 
             secure: true, 
             sameSite: 'None', 
-            maxAge: 3600000 , 
-            domain: 'shopping-eo6m.onrender.com' ,
-            path: '/'
+            maxAge: 3600000 ,
         });
 
         // Debug log to verify headers being sent
