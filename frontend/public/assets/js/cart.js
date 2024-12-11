@@ -52,14 +52,14 @@ function renderCart(cartItems) {
     let totalItemsCount = 0;
 
     cartItems.forEach((item) => {
-        const imagePath = `./assets/images/${item.name.toLowerCase()}.webp`;
+        const imagePath = `./assets/images/${item.name}.webp`;
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
         totalItemsCount += item.quantity;
 
         cartItemsContainer.innerHTML += `
             <div class="cart-item">
-                <img src="./assets/images/${item.name.toLowerCase()}.webp" alt="${item.name}">
+                <img src="./assets/images/${item.name}.webp" alt="${item.name}">
                 <div class="item-details">
                     <h2>${item.name}</h2>
                     <p>Price: $${item.price}</p>
